@@ -103,12 +103,10 @@
 
                 // Parse Kramdown extensions
                 /*
-                const before = $('.markdown-body').text();
+                const before = $('.markdown-body').html();
                 let after = '';
                 for (token of before.split(/({::\w+.*?\/?}|{:\/\w*})/)) {
-                    after += '[';
-                    after += token;
-                    after += ']';
+                    let matches = token.match(
                 }
                 $('.markdown-body').html(after);
                 */
