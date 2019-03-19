@@ -224,20 +224,32 @@
                     $('x-video').each(function(index, element) {
 
                         // Parse URL
-                        let o = urlParser.parse($(element).attr('src'));
-                        if (o) {
+                        let videoInfo = urlParser.parse($(element).attr('src'));
+                        if (videoInfo) {
 
                             // Inject parameters
-                            if (!o.params) {
-                                o.params = {};
-                            }
-                            if (o.provider === 'youtube') {
-                                o.params.rel = 0;
-                                o.params.showinfo = 0;
+                            let params = videoInfo.params || {};
+                            if (videoInfo.provider === 'youtube') {
+                                if (!('rel' in params)) {
+                                    params.rel = 0;
+                                }
+                                if (!('showinfo' in params)) {
+                                    params.showinfo = 0;
+                                }
                             }
 
+                            // Create URL
+                            let src = urlParser.create({format: 'embed', params: params, videoInfo: videoInfo});
+
+                            // Avoid redirects from youtube.com to www.youtube.com
+                            // https://github.com/Zod-/jsVideoUrlParser/pull/48
+                            src = src.replace(/^\/\/youtube\.com\//, 'https://www.youtube.com/');
+
+                            // Always use HTTPS
+                            src = src.replace(/^\/\//, 'https://');
+
                             // Embed video
-                            $(element).replaceWith('<iframe src="' + urlParser.create(o).embed + '"></iframe>');
+                            $(element).replaceWith('<iframe src="' + src + '"></iframe>');
                         }
                         else {
                             $(element).replaceWith('<img alt="static" src="https://live.cs50.io/static/static-bda124464961813d612f27c1f26eaa52f33bbec4f7d249a126843954c071021c.gif">');
