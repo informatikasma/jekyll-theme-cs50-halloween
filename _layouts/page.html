@@ -41,6 +41,12 @@
 
         <script>
 
+            {% include jsVideoUrlParser.min.js %}
+
+        </script>
+
+        <script>
+
             $(document).on('DOMContentLoaded', function() {
 
                 // Add toggler
@@ -109,8 +115,6 @@
 
                     // Tokenize HTML surrounding extensions' start tags and end tags
                     let tokens = $('.markdown-body').html().split(/({::\w+(?:(?!\\).{1}|^)*?\/?}|{:\/\w*})/);
-
-                    console.log(tokens);
 
                     // Iterate over tokens
                     for (let i = 0, matches; i < tokens.length; i++) {
@@ -213,10 +217,32 @@
                         }
                     }
 
-                    console.log(tokens);
-
                     // Replace HTML with modified tokens
                     $('.markdown-body').html(tokens.join(''));
+
+                    // Render x-video
+                    $('x-video').each(function(index, element) {
+
+                        // https://stackoverflow.com/a/8260383
+                        function youtube_parser(url) {
+                            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+                            var match = url.match(regExp);
+                            return (match&&match[7].length==11)? match[7] : false;
+                        }
+
+                        // Parse URL
+                        const id = youtube_parser($(element).attr('src'));
+
+                        // Embed if a YouTube URL
+                        if (id) {
+                            $(element).replaceWith('<iframe src="https://www.youtube.com/embed/' + id + '?rel=0&showinfo=0"></iframe>');
+                        }
+
+                        // Else show static
+                        else {
+                            $(element).replaceWith('<img alt="static" src="https://live.cs50.io/static/static-bda124464961813d612f27c1f26eaa52f33bbec4f7d249a126843954c071021c.gif">');
+                        }
+                    });
                 }
                 catch (err) {
                     console.log(err);
