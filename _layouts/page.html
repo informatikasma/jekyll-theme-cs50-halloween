@@ -101,6 +101,16 @@
                     }
                 });
 
+                // Parse Kramdown extensions
+                const before = $('.markdown-body').text();
+                let after = '';
+                for (token of text.split(/({::\w+.*?\/?}|{:\/\w*})/)) {
+                    after += '[';
+                    after += token;
+                    after += ']';
+                }
+                $('.markdown-body').html(after);
+
                 // Ensure last heading can be anchored atop page
                 $(window).resize(function() {
                     let last = $headings.last();
