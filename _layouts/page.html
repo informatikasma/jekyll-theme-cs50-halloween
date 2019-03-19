@@ -223,22 +223,19 @@
                     // Render x-video
                     $('x-video').each(function(index, element) {
 
-                        // https://stackoverflow.com/a/8260383
-                        function youtube_parser(url) {
-                            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-                            var match = url.match(regExp);
-                            return (match&&match[7].length==11)? match[7] : false;
-                        }
-
                         // Parse URL
-                        const id = youtube_parser($(element).attr('src'));
+                        let o = urlParser.parse($(element).attr('src'));
+                        if (o) {
 
-                        // Embed if a YouTube URL
-                        if (id) {
-                            $(element).replaceWith('<iframe src="https://www.youtube.com/embed/' + id + '?rel=0&showinfo=0"></iframe>');
+                            // Inject parameters
+                            if (o.provider === 'youtube') {
+                                o.params.rel = 0;
+                                o.params.showinfo = 0;
+                            }
+
+                            // Embed video
+                            $(element).replaceWith('<iframe src="' + urlParser.create(o).embed + '"></iframe>');
                         }
-
-                        // Else show static
                         else {
                             $(element).replaceWith('<img alt="static" src="https://live.cs50.io/static/static-bda124464961813d612f27c1f26eaa52f33bbec4f7d249a126843954c071021c.gif">');
                         }
