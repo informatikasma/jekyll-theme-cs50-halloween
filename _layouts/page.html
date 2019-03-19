@@ -104,7 +104,7 @@
                 // Parse Kramdown extensions
                 const before = $('.markdown-body').text();
                 let after = '';
-                for (token of text.split(/({::\w+.*?\/?}|{:\/\w*})/)) {
+                for (token of before.split(/({::\w+.*?\/?}|{:\/\w*})/)) {
                     after += '[';
                     after += token;
                     after += ']';
