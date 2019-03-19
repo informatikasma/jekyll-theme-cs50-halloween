@@ -228,6 +228,9 @@
                         if (o) {
 
                             // Inject parameters
+                            if (!o.params) {
+                                o.params = {};
+                            }
                             if (o.provider === 'youtube') {
                                 o.params.rel = 0;
                                 o.params.showinfo = 0;
