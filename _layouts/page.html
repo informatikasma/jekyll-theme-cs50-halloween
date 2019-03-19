@@ -224,21 +224,37 @@
                     // Render x-video
                     $('x-video').each(function(index, element) {
 
+                        // Default parameters
+                        const PARAMS = {
+                            'dailymotion': {
+                            },
+                            'twitch': {
+                                'autoplay: 1
+                            },
+                            'vimeo': {
+                                'autoplay: 1
+                            },
+                            'wistia': {
+                            },
+                            'youtube': {
+                                'autoplay: 1,
+                                'rel': 0,
+                                'showinfo': 0
+                            }
+                        };
+
                         // Parse URL
                         let videoInfo = urlParser.parse($(element).attr('src'));
-                        if (videoInfo) {
+                        if (videoInfo && PARAMS.keys().indexOf(videoInfo.provider) > -1) {
 
                             // Inject parameters
-                            let params = videoInfo.params || {};
-                            if (videoInfo.provider === 'youtube') {
-                                if (!('rel' in params)) {
-                                    params.rel = 0;
-                                }
-                                if (!('showinfo' in params)) {
-                                    params.showinfo = 0;
+                            let params = PARAMS[videoInfo.provider];
+                            if (videoInfo.params) {
+                                for (let param in videoInfo.params) {
+                                    params[param] = videoInfo.params[param];
                                 }
                             }
-
+                            
                             // Create URL
                             let src = urlParser.create({format: 'embed', params: params, videoInfo: videoInfo});
 
