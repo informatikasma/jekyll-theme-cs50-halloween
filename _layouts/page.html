@@ -102,14 +102,125 @@
                 });
 
                 // Parse Kramdown extensions
-                /*
-                const before = $('.markdown-body').html();
-                let after = '';
-                for (token of before.split(/({::\w+.*?\/?}|{:\/\w*})/)) {
-                    let matches = token.match(
+                try {
+
+                    // Stack for extensions' start tags
+                    let stack = [];
+
+                    // Tokenize HTML surrounding extensions' start tags and end tags
+                    let tokens = $('.markdown-body').html().split(/({::\w+(?:(?!\\).{1}|^)*?\/?}|{:\/\w*})/);
+
+                    console.log(tokens);
+
+                    // Iterate over tokens
+                    for (let i = 0, matches; i < tokens.length; i++) {
+
+                        // If a start tag
+                        if (matches = tokens[i].match(/^{::(\w+)(?:(?!\\).{1}|^)*?(\/?)}$/)) {
+
+                            // Extension's name
+                            const tagName = matches[1];
+
+                            // Convert to custom HTML component, decurling any quotes
+                            tokens[i] = tokens[i].replace(/^{::/, '<x-').replace(/‘|’/g, "'").replace(/“|”/g, '"');
+
+                            // If no body present or a bodyless extension
+                            if (matches[2] || ['next', 'video'].indexOf(tagName) > -1) {
+
+                                // End element
+                                tokens[i] = tokens[i].replace(/\/?}$/, '/>');
+                            }
+
+                            // If body potentially present
+                            else {
+
+                                // End tag but not element
+                                tokens[i] = tokens[i].replace(/}$/, '>');
+
+                                // Remember extension's name
+                                stack.push(tagName);
+                            }
+                        }
+
+                        // If an end tag
+                        else if (matches = tokens[i].match(/^{:\/(\w*)}$/)) {
+
+                            // Extension's name
+                            let tagName = matches[1];
+
+                            // If nothing to pop
+                            if (!stack.length) {
+                                throw new Error('Unexpected end tag: ' + tagName);
+                            }
+
+                            // If end tag doesn't match start tag
+                            const top = stack.pop();
+                            if (tagName.length) {
+                                if (tagName !== top) {
+                                    throw new Error('Unexpected end tag: ' + tagName);
+                                }
+                            }
+
+                            // If closed anonymously with {:/}
+                            else {
+                                tagName = top;
+                            }
+
+                            // End element
+                            tokens[i] = '</x-' + tagName + '>';
+                        }
+
+                        // If token has any preceding siblings
+                        if (i > 0) {
+
+                            // Match nearest opened paragraph
+                            const matches = tokens[i - 1].match(/<p>([\s\S]*?)$/);
+                            if (matches) {
+
+                                // If paragraph contains other content
+                                if (matches[1] && !matches[1].match(/<\/p>/)) {
+
+                                    // Close paragraph
+                                    tokens[i - 1] = tokens[i - 1].replace(/\s*$/, '') + '</p>';
+                                }
+
+                                // Else remove paragraph's start tag
+                                else {
+                                    tokens[i - 1] = tokens[i - 1].replace(/<p>\s*$/, '');
+                                }
+                            }
+                        }
+
+                        // If token has any following siblings
+                        if (i + 1 < tokens.length) {
+
+                            // Match nearest closed paragraph
+                            const matches = tokens[i + 1].match(/^([\s\S]*?)<\/p>/);
+                            if (matches) {
+
+                                // If paragraph contains other content
+                                if (matches[1] && !matches[1].match(/<\/p>/)) {
+
+                                    // Re-open paragraph
+                                    tokens[i + 1] = '<p>' + tokens[i + 1].replace(/^\s*/, '');
+                                }
+
+                                // Else remove paragraph's end tag
+                                else {
+                                    tokens[i + 1] = tokens[i + 1].replace(/^\s*<\/p>/, '');
+                                }
+                            }
+                        }
+                    }
+
+                    console.log(tokens);
+
+                    // Replace HTML with modified tokens
+                    $('.markdown-body').html(tokens.join(''));
                 }
-                $('.markdown-body').html(after);
-                */
+                catch (err) {
+                    console.log(err);
+                }
 
                 // Ensure last heading can be anchored atop page
                 $(window).resize(function() {
