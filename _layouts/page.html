@@ -245,7 +245,7 @@
 
                         // Parse URL
                         let videoInfo = urlParser.parse($(element).attr('src'));
-                        if (videoInfo && PARAMS.keys().indexOf(videoInfo.provider) > -1) {
+                        if (videoInfo && Object.keys(PARAMS).indexOf(videoInfo.provider) > -1) {
 
                             // Inject parameters
                             let params = PARAMS[videoInfo.provider];
