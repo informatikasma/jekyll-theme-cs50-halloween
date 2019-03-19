@@ -277,6 +277,9 @@
                     console.log(err);
                 }
 
+                // Reveal Markdown
+                $('.markdown-body').show();
+
                 // Ensure last heading can be anchored atop page
                 $(window).resize(function() {
                     let last = $headings.last();
@@ -301,6 +304,15 @@
             });
 
         </script>
+
+        <style>
+
+            /* Hide until shown by JavaScript */
+            .markdown-body {
+                display: none;
+            }
+
+        </style>
 
         <title>{{ title }}</title>
 
