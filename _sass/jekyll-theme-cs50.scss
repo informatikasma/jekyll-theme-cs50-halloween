@@ -15,6 +15,15 @@ $link-hover-color: $link-color !default;
 // Import Google Fonts
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700");
 
+// Buttons
+.btn {
+    background-color: rgba(165, 28, 48, .5);
+    color: rgba(255, 255, 255, 1)
+}
+.btn:hover {
+    background-color: rgba(165, 28, 48, 1);
+}
+
 // Root em
 html {
     font-size: 18px;
