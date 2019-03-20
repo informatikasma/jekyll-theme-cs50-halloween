@@ -211,6 +211,11 @@ main {
     margin-top: 0;
 }
 
+// Avoid trailing whitespace inside cards
+.markdown-body .card:last-child {
+    margin-bottom: 0;
+}
+
 // Condense TOC
 #markdown-toc li + li,
 #markdown-toc ol > li:first-child,
