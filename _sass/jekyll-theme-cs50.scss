@@ -20,6 +20,16 @@ html {
     font-size: 18px;
 }
 
+button {
+    border-color: rgba(255, 255, 255, .5);
+    opacity: .5;
+}
+
+button:hover {
+    border-color: rgba(255, 255, 255, .5);
+    opacity: 1;
+}
+
 // Defaults for iframes
 iframe {
     border: 0;
@@ -71,10 +81,9 @@ aside h6 {
 // Opaque text
 aside a,
 aside a:hover,
-aside button[data-toggle=collapse],
-aside button[data-toggle=collapse]:hover {
+aside button,
+aside button:hover {
     background-color: inherit;
-    border-color: rgba(255, 255, 255, .5);
     color: rgba(255, 255, 255, 1);
 }
 
