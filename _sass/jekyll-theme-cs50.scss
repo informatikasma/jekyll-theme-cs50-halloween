@@ -205,7 +205,8 @@ main {
 }
 
 // Mimic p
-.markdown-body .embed-responsive {
+.markdown-body .embed-responsive,
+.markdown-body .card {
     margin-bottom: 16px;
     margin-top: 0;
 }

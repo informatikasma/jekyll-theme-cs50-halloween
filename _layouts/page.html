@@ -196,6 +196,7 @@
                         const title = $(element).attr('title') || 'Spoiler';
                         const id = sha1($(element).html());
                         const html = 
+                            '<div class="x-spoiler">' +
                             '<p>' +
                             '<button aria-controls="id-' + id + '" aria-expanded="false" class="btn btn-primary" data-target="#id-' + id + '" data-toggle="collapse" type="button">' + 
                             title + 
@@ -205,8 +206,15 @@
                             '<div class="card card-body">' +
                             $(element).html() +
                             '</div>' +
+                            '</div>' +
                             '</div>';
                         $(element).replaceWith($(html));
+                        $('.x-spoiler > p > button').on('show.bs.collapse', function() {
+                            $(this).addClass('active');
+                        });
+                        $('.x-spoiler > p > button').on('hide.bs.collapse', function() {
+                            $(this).removeClass('active');
+                        });
                     });
 
                     // Render x-video
