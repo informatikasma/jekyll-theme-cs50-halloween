@@ -209,7 +209,6 @@
                             '</div>' +
                             '</div>';
                         $(element).replaceWith($(html));
-                        $('#div-' + id).collapse();
                         $('#button-' + id).on('click', function() {
                             $(this).toggleClass('active');
                             $('#div-' + id).collapse('toggle');
