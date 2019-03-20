@@ -212,7 +212,7 @@ main {
 }
 
 // Avoid trailing whitespace inside cards
-.markdown-body .card:last-child {
+.markdown-body .card *:last-child {
     margin-bottom: 0;
 }
 
