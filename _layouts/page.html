@@ -39,6 +39,9 @@
         <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+        <!-- https://github.com/emn178/js-sha1 -->
+        <script crossorigin="anonymous" integrity="sha256-7uoevSMGGHaM9JT1c9+XCpW+ECg1f7KnPL/JNpDjSRI=" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
+
         <script>
 
             /* https://github.com/Zod-/jsVideoUrlParser */
@@ -191,13 +194,14 @@
                     // Render x-spoiler
                     $('x-spoiler').each(function(index, element) {
                         const title = $(element).attr('title') || 'Spoiler';
+                        const id = sha1($(element).html());
                         const html = 
                             '<p>' +
-                            '<button aria-controls="collapseExample" aria-expanded="false" class="btn btn-primary" data-target="#collapseExample" data-toggle="collapse" type="button">' + 
+                            '<button aria-controls="' + id + '" aria-expanded="false" class="btn btn-primary" data-target="#' + id + '" data-toggle="collapse" type="button">' + 
                             title + 
                             '</button>' +
                             '</p>' +
-                            '<div class="collapse" id="collapseExample">' +
+                            '<div class="collapse" id="' + id + '">' +
                             '<div class="card card-body">' +
                             $(element).html() +
                             '</div>' +
