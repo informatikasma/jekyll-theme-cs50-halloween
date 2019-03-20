@@ -191,7 +191,13 @@
                     // Render x-spoiler
                     $('x-spoiler').each(function(index, element) {
                         const title = $(element).attr('title') || 'Spoiler';
-                        const html = '<button class="btn btn-primary" type="button">' + title + '</button>';
+                        const html = 
+                            '<p><button class="btn btn-primary" type="button">' + title + '</button></p>' +
+                            '<div class="collapse" id="collapseExample">' +
+                            '<div class="card card-body">' +
+                            $(element).html() +
+                            '</div>' +
+                            '</div>';
                         $(element).replaceWith($(html));
                     });
 
