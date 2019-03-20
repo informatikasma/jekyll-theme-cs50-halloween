@@ -17,11 +17,11 @@ $link-hover-color: $link-color !default;
 
 // Buttons
 .btn {
-    background-color: rgba(165, 28, 48, .5);
-    color: rgba(255, 255, 255, 1)
+    border-color: rgba(165, 28, 48, .5);
+    color: rgba(165, 28, 48, 1);
 }
 .btn:hover {
-    background-color: rgba(165, 28, 48, 1);
+    border-color: rgba(165, 28, 48, 1);
 }
 
 // Root em
