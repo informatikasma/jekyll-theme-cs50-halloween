@@ -192,7 +192,11 @@
                     $('x-spoiler').each(function(index, element) {
                         const title = $(element).attr('title') || 'Spoiler';
                         const html = 
-                            '<p><button class="btn btn-primary" type="button">' + title + '</button></p>' +
+                            '<p>' +
+                            '<button aria-controls="collapseExample" aria-expanded="false" class="btn btn-primary" data-target="#collapseExample" data-toggle="collapse" type="button">' + 
+                            title + 
+                            '</button>' +
+                            '</p>' +
                             '<div class="collapse" id="collapseExample">' +
                             '<div class="card card-body">' +
                             $(element).html() +
