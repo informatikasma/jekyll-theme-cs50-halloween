@@ -194,15 +194,13 @@
                         // Default parameters
                         const PARAMS = {
                             'dailymotion': {
+                                'queue-enable': false
                             },
                             'twitch': {
-                                'autoplay': 0,
+                                'autoplay': false,
                             },
-                            'vimeo': {
-                                'autoplay': 0,
-                            },
-                            'wistia': {
-                            },
+                            'vimeo': {},
+                            'wistia': {},
                             'youtube': {
                                 'autoplay': 0,
                                 'rel': 0,
@@ -233,7 +231,7 @@
                             src = src.replace(/^\/\//, 'https://');
 
                             // Embed video
-                            $(element).replaceWith('<iframe src="' + src + '"></iframe>');
+                            $(element).replaceWith('<iframe allowfullscreen src="' + src + '"></iframe>');
                         }
                         else {
                             $(element).replaceWith('<img alt="static" src="https://live.cs50.io/static/static-bda124464961813d612f27c1f26eaa52f33bbec4f7d249a126843954c071021c.gif">');
