@@ -188,6 +188,13 @@
                     // Replace HTML with modified tokens
                     $('.markdown-body').html(tokens.join(''));
 
+                    // Render x-spoiler
+                    $('x-spoiler').each(function(index, element) {
+                        const title = $(element).attr('title') || 'Spoiler';
+                        const html = '<button class="btn btn-primary" type="button">' + title + '</button>';
+                        $(element).replaceWith($(html));
+                    });
+
                     // Render x-video
                     $('x-video').each(function(index, element) {
 
