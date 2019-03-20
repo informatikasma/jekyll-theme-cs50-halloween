@@ -197,11 +197,11 @@
                         const id = sha1($(element).html());
                         const html = 
                             '<p>' +
-                            '<button aria-controls="spoiler:' + id + '" aria-expanded="false" class="btn btn-primary" data-target="#spoiler:' + id + '" data-toggle="collapse" type="button">' + 
+                            '<button aria-controls="id-' + id + '" aria-expanded="false" class="btn btn-primary" data-target="#id-' + id + '" data-toggle="collapse" type="button">' + 
                             title + 
                             '</button>' +
                             '</p>' +
-                            '<div class="collapse" id="spoiler:' + id + '">' +
+                            '<div class="collapse" id="id-' + id + '">' +
                             '<div class="card card-body">' +
                             $(element).html() +
                             '</div>' +
