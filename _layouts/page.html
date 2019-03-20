@@ -196,16 +196,14 @@
                         const title = $(element).attr('title') || 'Spoiler';
                         const id = sha1($(element).html());
                         const html = 
-                            '<div class="x-spoiler">' +
                             '<p>' +
-                            '<button aria-controls="div-' + id + '" aria-expanded="false" class="btn btn-primary" id="button-' + id + '" type="button">' + 
+                            '<button aria-controls="div-' + id + '" aria-expanded="false" class="btn btn-outline-primary" id="button-' + id + '" type="button">' + 
                             title + 
                             '</button>' +
                             '</p>' +
                             '<div class="collapse" id="div-' + id + '">' +
                             '<div class="card card-body">' +
                             $(element).html() +
-                            '</div>' +
                             '</div>' +
                             '</div>';
                         $(element).replaceWith($(html));
