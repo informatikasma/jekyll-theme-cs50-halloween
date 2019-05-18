@@ -124,6 +124,20 @@
 
         <div class="container-fluid">
 
+            {%- capture alert -%}{%- include alert.md -%}{%- endcapture -%}
+            {% if alert %}
+
+                <div class="row">
+
+                    <div class="alert alert-warning" role="alert">
+
+                        {{ alert }}
+
+                    </div>
+                </div>
+
+            {% endif %}
+
             <div class="row">
 
                 <aside class="col-md">
@@ -153,26 +167,11 @@
 
                 </aside>
 
-                <div class="col-md">
+                <main class="col-md markdown-body">
 
-                    {%- capture alert -%}{%- include alert.md -%}{%- endcapture -%}
-                    {% if alert %}
+                    {{ content }}
 
-                        <div class="alert alert-warning" role="alert">
-
-                            {{ alert }}
-
-                        </div>
-
-                    {% endif %}
-
-                    <main class="markdown-body">
-
-                        {{ content }}
-
-                    </main>
-
-                </div>
+                </main>
 
             </div>
 
