@@ -156,13 +156,10 @@
                 {%- capture alert -%}{%- include alert.md -%}{%- endcapture -%}
                 {% if alert %}
 
-                    <div class="row">
+                    <div class="alert alert-warning" role="alert">
 
-                        <div class="alert alert-warning" role="alert">
+                        {{ alert }}
 
-                            {{ alert }}
-
-                        </div>
                     </div>
 
                 {% endif %}
