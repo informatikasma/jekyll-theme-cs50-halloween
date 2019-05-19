@@ -135,40 +135,44 @@
 
             {% endif %}
 
-            <div class="container-fluid d-md-flex flex-fill">
+            <div class="container-fluid">
 
-                <aside class="col-md h-100">
- 
-                    <header>
+                <div class="d-md-flex flex-fill row">
 
-                        {%- capture header -%}{%- include header.md -%}{%- endcapture -%}
-                        {{- header | markdownify | replace: " id=", " data-id=" | strip -}}
+                    <aside class="col-md h-100">
+     
+                        <header>
 
-                    </header>
+                            {%- capture header -%}{%- include header.md -%}{%- endcapture -%}
+                            {{- header | markdownify | replace: " id=", " data-id=" | strip -}}
 
-                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-md-none" data-target="aside > nav" data-toggle="collapse">Menu</button>
+                        </header>
 
-                    <nav class="collapse d-md-block">
+                        <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-md-none" data-target="aside > nav" data-toggle="collapse">Menu</button>
 
-                        {%- capture nav -%}{%- include nav.md -%}{%- endcapture -%}
-                        {{- nav | markdownify | replace: " id=", " data-id=" | strip -}}
+                        <nav class="collapse d-md-block">
 
-                    </nav>
+                            {%- capture nav -%}{%- include nav.md -%}{%- endcapture -%}
+                            {{- nav | markdownify | replace: " id=", " data-id=" | strip -}}
 
-                    <footer>
+                        </nav>
 
-                        {%- capture footer -%}{%- include footer.md -%}{%- endcapture -%}
-                        {{- footer | markdownify | replace: " id=", " data-id=" | strip -}}
+                        <footer>
 
-                    </footer>
+                            {%- capture footer -%}{%- include footer.md -%}{%- endcapture -%}
+                            {{- footer | markdownify | replace: " id=", " data-id=" | strip -}}
 
-                </aside>
+                        </footer>
 
-                <main class="col-md markdown-body h-100">
+                    </aside>
 
-                    {{ content }}
+                    <main class="col-md markdown-body h-100">
 
-                </main>
+                        {{ content }}
+
+                    </main>
+
+                </div>
 
             </div>
 
