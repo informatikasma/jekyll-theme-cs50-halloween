@@ -121,9 +121,11 @@
                         $('main').css('padding-bottom', bottom);
                     }
 
-                    // Simulate max-width of 4rem, keeping scrollbar at far right
-                    let right = Math.max(0, Math.ceil($('main').outerWidth() - $('aside').outerWidth() * 4));
-                    $('main').css('padding-right', right + 'px');
+                    // On large devices, simulate max-width of 4rem, keeping scrollbar at far right
+                    if (!($('aside').offset().top < $('main').offset().top)) {
+                        let right = Math.max(0, Math.ceil($('main').outerWidth() - $('aside').outerWidth() * 4));
+                        $('main').css('padding-right', right + 'px');
+                    }
                 });
                 $(window).trigger('resize');
 
