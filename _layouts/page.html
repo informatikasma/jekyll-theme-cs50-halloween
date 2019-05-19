@@ -98,12 +98,12 @@
 
                         // On small devices
                         if ($('aside').offset().top < $('main').offset().top) {
-                            var padding = $(window).height() - ($('main').outerHeight() + $('aside').outerHeight() - last.offset().top);
+                            var padding = $(window).height() - ($('main').height() + $('aside').outerHeight() - last.offset().top);
                         }
 
                         // On large devices
                         else {
-                            var padding = $(window).height() - $('body > .flex-column > .alert').outerHeight() - ($('main').outerHeight() - last.offset().top);
+                            var padding = $(window).height() - $('body > .flex-column > .alert').outerHeight() - ($('main').height() - last.offset().top);
                         }
 
                         // Update margin
