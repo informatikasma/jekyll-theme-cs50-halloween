@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="{{ page.lang | default: site.lang | default: "en-us" }}">
+<html class="h-100" lang="{{ page.lang | default: site.lang | default: "en-us" }}">
 
     <head>
 
@@ -120,9 +120,9 @@
 
     </head>
 
-    <body>
+    <body class="h-100">
 
-        <div class="container-fluid d-md-flex flex-column">
+        <div class="container-fluid d-md-flex flex-column h-100">
 
             {%- capture alert -%}{%- include alert.md -%}{%- endcapture -%}
             {% if alert %}

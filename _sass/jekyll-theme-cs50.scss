@@ -57,9 +57,11 @@ aside.col-md {
 
 // Fixed width, scroll on larger devices
 @include media-breakpoint-up(md) {
+    /*
     html, body, .container-fluid, aside, main {
         height: 100%;
     }
+    */
     aside, main {
         overflow-y: auto;
     }
