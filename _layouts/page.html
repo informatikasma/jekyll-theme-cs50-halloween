@@ -92,27 +92,28 @@
                 });
 
                 // Ensure last heading can be anchored atop page
-                /*
                 $(window).resize(function() {
                     let last = $headings.last();
                     if (last.length) {
 
-                        // On small devices
-                        if ($('aside').offset().top < $('main').offset().top) {
-                            var padding = $(window).height() - ($('main').height() + $('aside').outerHeight() - last.offset().top);
+                        // Subtract last heading's height from viewport's height
+                        var padding = $(window).height() - last.outerHeight(true);
+
+                        // Subtract heights of last heading's following siblings
+                        last.nextAll().each(function(index, element) {
+                            padding -= $(element).outerHeight();
+                        });
+
+                        // On large devices, subtract any alert's height
+                        if (!($('aside').offset().top < $('main').offset().top)) {
+                            padding -= $('body > .flex-column > .alert').outerHeight();
                         }
 
-                        // On large devices
-                        else {
-                            var padding = $(window).height() - $('body > .flex-column > .alert').outerHeight() - ($('main').height() - last.offset().top);
-                        }
-
-                        // Update margin
+                        // Add padding as needed
                         $('main').css('padding-bottom', Math.max(0, Math.ceil(padding)) + 'px');
                     }
                 });
                 $(window).trigger('resize');
-                */
 
             });
 
@@ -179,8 +180,6 @@
                             {{ content }}
 
                         </main>
-
-                        <div id="foo"></div>
 
                     </div>
 
