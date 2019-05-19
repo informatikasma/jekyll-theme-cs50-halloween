@@ -63,7 +63,7 @@ aside.col-md {
     aside.col-md {
         flex: 0 1 20rem;
     }
-    body > .flex-column > .flex-fill {
+    body > .flex-column > .container-fluid > .flex-fill {
         overflow: hidden;
     }
 }
