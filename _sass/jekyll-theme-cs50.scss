@@ -55,7 +55,7 @@ aside.col-md {
     padding: 2rem 2rem;
 }
 
-// Fixed width, scroll on larger devices
+// Sticky aside on larger devices, responsive below any alert
 @include media-breakpoint-up(md) {
     aside, main {
         overflow-y: auto;
@@ -63,7 +63,7 @@ aside.col-md {
     aside.col-md {
         flex: 0 1 20rem;
     }
-    .flex-fill {
+    body > .container-fluid > .flex-fill {
         overflow: hidden;
     }
 }
