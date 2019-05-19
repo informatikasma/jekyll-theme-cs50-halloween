@@ -104,9 +104,14 @@
                             padding -= $(element).outerHeight();
                         });
 
-                        // On large devices, subtract any alert's height
+                        // On large devices
                         if (!($('aside').offset().top < $('main').offset().top)) {
-                            padding -= $('body > .flex-column > .alert').outerHeight();
+
+                            // Subtract alert's height
+                            let alert = $('body > .flex-column > .alert');
+                            if (alert) {
+                                padding -= alert.outerHeight();
+                            }
                         }
 
                         // Add padding as needed
@@ -132,7 +137,7 @@
 
                 <div class="alert alert-warning border-0 mb-0 rounded-0" role="alert">
 
-                    {{ alert.size }}
+                    {{ alert }}
 
                 </div>
 
@@ -148,7 +153,7 @@
      
                             <header>
 
-                                3
+                                5
 
                                 {%- capture header -%}{%- include header.md -%}{%- endcapture -%}
                                 {{- header | markdownify | replace: " id=", " data-id=" | strip -}}
