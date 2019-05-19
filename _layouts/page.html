@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="h-100" lang="{{ page.lang | default: site.lang | default: "en-us" }}">
+<html lang="{{ page.lang | default: site.lang | default: "en-us" }}">
 
     <head>
 
@@ -120,9 +120,9 @@
 
     </head>
 
-    <body class="h-100">
+    <body>
 
-        <div class="container-fluid d-flex h-100 flex-column">
+        <div class="container-fluid d-md-flex flex-column">
 
             {%- capture alert -%}{%- include alert.md -%}{%- endcapture -%}
             {% if alert %}
@@ -141,9 +141,9 @@
             </div>
             {% endif %}
 
-            <div class="d-flex flex-fill h-100 overflow-hidden row">
+            <div class="d-md-flex flex-fill row">
 
-                <aside class="col-md h-100">
+                <aside class="col-md">
  
                     <header>
 
@@ -170,7 +170,7 @@
 
                 </aside>
 
-                <main class="col-md h-100 markdown-body overflow-auto">
+                <main class="col-md markdown-body">
 
                     {{ content }}
 
