@@ -122,20 +122,26 @@
 
     <body class="h-100">
 
-        <div class="d-md-flex flex-column h-100">
+        <div class="container-fluid d-md-flex flex-column h-100">
 
             {%- capture alert -%}{%- include alert.md -%}{%- endcapture -%}
             {% if alert %}
+            <div class="row">
 
-                <div class="alert alert-warning border-0 flex-column mb-0 rounded-0" role="alert">
+                <div class="col">
 
-                    {{ alert }}
+                    <div class="alert alert-warning border-0 flex-column mb-0 rounded-0" role="alert">
+
+                        {{ alert }}
+
+                    </div>
 
                 </div>
 
+            </div>
             {% endif %}
 
-            <div class="container-fluid d-md-flex flex-fill row">
+            <div class="d-md-flex flex-fill row">
 
                 <aside class="col-md h-100">
  
