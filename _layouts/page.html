@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="{{ page.lang | default: site.lang | default: "en-us" }}">
+<html class="h-100" lang="{{ page.lang | default: site.lang | default: "en-us" }}">
 
     <head>
 
@@ -116,19 +116,11 @@
 
         </script>
 
-        <style>
-
-            .flex-fill {
-                flex: 1;
-            }
-
-        </style>
-
         <title>{{ title }}</title>
 
     </head>
 
-    <body>
+    <body class="h-100">
 
         <div class="container-fluid d-flex h-100 flex-column">
 
@@ -149,9 +141,9 @@
             </div>
             {% endif %}
 
-            <div class="row flex-fill d-flex justify-content-start">
+            <div class="d-flex flex-fill h-100 overflow-hidden row">
 
-                <aside class="col-md">
+                <aside class="col-md h-100">
  
                     <header>
 
@@ -178,7 +170,7 @@
 
                 </aside>
 
-                <main class="col-md markdown-body">
+                <main class="col-md h-100 markdown-body overflow-auto">
 
                     {{ content }}
 
