@@ -57,32 +57,15 @@ aside.col-md {
 
 // Fixed width, scroll on larger devices
 @include media-breakpoint-up(md) {
-    /*
-    html, body, .container-fluid, aside, main {
-        height: 100%;
-    }
-    */
     aside, main {
         overflow-y: auto;
     }
-    aside {
+    aside.col-md {
         flex: 0 1 20rem;
     }
     .flex-fill {
         overflow: hidden;
     }
-    /*
-    aside.col-md {
-        flex: 0 1 20rem;
-        @supports (position: sticky) {
-            height: 100vh;
-            overflow-y: auto;
-            position: sticky;
-            top: 0;
-            z-index: $zindex-sticky;
-        }
-    }
-    */
 }
 
 // Align badges
