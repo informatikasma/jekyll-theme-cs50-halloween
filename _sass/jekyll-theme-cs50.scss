@@ -64,8 +64,11 @@ aside {
         height: 100%;
         overflow-y: auto;
     }
-    body > .flex-column > :last-child {
+    body > .flex-column > .container-fluid {
         overflow-y: hidden;
+    }
+    body > .flex-column > .container-fluid > .row > .col-md {
+        height: 100%;
     }
 }
 
