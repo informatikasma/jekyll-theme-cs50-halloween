@@ -109,13 +109,14 @@
 
                             // Subtract alert's height
                             let alert = $('body > .flex-column > .alert');
-                            if (alert) {
+                            if (alert.length) {
                                 padding -= alert.outerHeight();
                             }
                         }
 
                         // Add padding as needed
-                        $('main').css('padding-bottom', Math.max(0, Math.ceil(padding)) + 'px');
+                        padding = (padding > 0) ? Math.ceil(padding) + 'px' : '4rem';
+                        $('main').css('padding-bottom', padding);
                     }
                 });
                 $(window).trigger('resize');
@@ -153,7 +154,7 @@
      
                             <header>
 
-                                5
+                                6
 
                                 {%- capture header -%}{%- include header.md -%}{%- endcapture -%}
                                 {{- header | markdownify | replace: " id=", " data-id=" | strip -}}
