@@ -63,6 +63,12 @@ aside.col-md {
     aside, main {
         overflow-y: auto;
     }
+    aside {
+        flex: 0 1 20rem;
+    }
+    .flex-fill {
+        overflow: hidden;
+    }
     /*
     aside.col-md {
         flex: 0 1 20rem;
