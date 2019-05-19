@@ -128,11 +128,11 @@
         <div class="d-md-flex flex-column h-100">
 
             {%- capture alert -%}{%- include alert.md -%}{%- endcapture -%}
-            {% if alert | size %}
+            {% if alert %}
 
                 <div class="alert alert-warning border-0 mb-0 rounded-0" role="alert">
 
-                    {{ alert }}
+                    [{{ alert }}]
 
                 </div>
 
