@@ -91,17 +91,20 @@
                     }
                 });
 
-                // Ensure last heading can be anchored atop page
+                // Listen for resize
                 $(window).resize(function() {
+
+
+                    // Ensure last heading can be anchored atop page
                     let last = $headings.last();
                     if (last.length) {
 
                         // Subtract last heading's height from viewport's height
-                        var padding = $(window).height() - last.outerHeight(true);
+                        var bottom = $(window).height() - last.outerHeight(true);
 
                         // Subtract heights of last heading's following siblings
                         last.nextAll().each(function(index, element) {
-                            padding -= $(element).outerHeight();
+                            bottom -= $(element).outerHeight();
                         });
 
                         // On large devices
@@ -110,14 +113,18 @@
                             // Subtract alert's height
                             let alert = $('body > .flex-column > .alert');
                             if (alert.length) {
-                                padding -= alert.outerHeight();
+                                bottom -= alert.outerHeight();
                             }
                         }
 
                         // Add padding as needed
-                        padding = (padding > 0) ? Math.ceil(padding) + 'px' : '4rem';
-                        $('main').css('padding-bottom', padding);
+                        bottom = (bottom > 0) ? Math.ceil(bottom) + 'px' : '4rem';
+                        $('main').css('padding-bottom', bottom);
                     }
+
+                    // Simulate max-width of 4rem, keeping scrollbar at far right
+                    let right = Math.max(0, Math.ceil($('main').outerWidth() - $('aside').outerWidth() * 4));
+                    $('main').css('padding-right', right + 'px');
                 });
                 $(window).trigger('resize');
 
