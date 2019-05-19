@@ -92,27 +92,25 @@
                 });
 
                 // Ensure last heading can be anchored atop page
-                /*
                 $(window).resize(function() {
                     let last = $headings.last();
                     if (last.length) {
 
                         // On small devices
-                        if ($('aside').position().top < $('main').position().top) {
-                            var margin = $(window).height() - ($('main').outerHeight() + $('aside').outerHeight() - last.offset().top);
+                        if ($('aside').offset().top < $('main').offset().top) {
+                            var padding = $(window).height() - ($('main').outerHeight() + $('aside').outerHeight() - last.offset().top);
                         }
 
                         // On large devices
                         else {
-                            var margin = $(window).height() - ($('main').outerHeight() - last.offset().top);
+                            var padding = $(window).height() - $('body > .flex-column > .alert').outerHeight() - ($('main').outerHeight() - last.offset().top);
                         }
 
                         // Update margin
-                        $('main').css('margin-bottom', Math.max(0, Math.ceil(margin)) + 'px');
+                        $('main').css('padding-bottom', Math.max(0, Math.ceil(padding)) + 'px');
                     }
                 });
                 $(window).trigger('resize');
-                */
 
             });
 
