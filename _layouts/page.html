@@ -116,26 +116,40 @@
 
         </script>
 
+        <style>
+
+            .flex-fill {
+                flex: 1;
+            }
+
+        </style>
+
         <title>{{ title }}</title>
 
     </head>
 
     <body>
 
-        {%- capture alert -%}{%- include alert.md -%}{%- endcapture -%}
-        {% if alert %}
+        <div class="container-fluid d-flex h-100 flex-column">
 
-            <div class="alert alert-warning border-0 mb-0 rounded-0" role="alert">
+            {%- capture alert -%}{%- include alert.md -%}{%- endcapture -%}
+            {% if alert %}
+            <div class="row">
 
-                {{ alert }}
+                <div class="col">
+
+                    <div class="alert alert-warning border-0 flex-column mb-0 rounded-0" role="alert">
+
+                        {{ alert }}
+
+                    </div>
+
+                </div>
 
             </div>
+            {% endif %}
 
-        {% endif %}
-
-        <div class="container-fluid">
-
-           <div class="row">
+            <div class="row flex-fill d-flex justify-content-start">
 
                 <aside class="col-md">
  
