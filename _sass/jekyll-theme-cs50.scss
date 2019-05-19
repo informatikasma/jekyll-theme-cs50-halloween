@@ -162,7 +162,10 @@ footer:empty {
 
 // Override column's padding, width
 main {
-    padding: 4rem 2rem;
+    padding-bottom: 0rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 4rem;
 }
 
 // Override Primer's family and size for fonts
