@@ -51,18 +51,18 @@ aside {
 }
 
 // Override column's padding
-aside.col-md {
+aside {
     padding: 2rem 2rem;
 }
 
 // Sticky aside on larger devices, responsive below any alert
 @include media-breakpoint-up(md) {
+    aside {
+        width: 20rem;
+    }
     aside, main {
         height: 100%;
         overflow-y: auto;
-    }
-    aside.col-md {
-        flex: 0 1 20rem;
     }
     body > .flex-column > :last-child {
         overflow-y: hidden;
