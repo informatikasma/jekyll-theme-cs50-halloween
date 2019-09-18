@@ -223,9 +223,10 @@ end
 
 module Kramdown
   module Parser
-    lass GFM < Kramdown::Parser::Kramdown
+    class GFM < Kramdown::Parser::Kramdown
 
       def parse_link
+        puts "HEREEEEEEEEEEEEEEEE"
         super
 
         # Get link
