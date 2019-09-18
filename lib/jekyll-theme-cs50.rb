@@ -223,13 +223,16 @@ end
 
 module Kramdown
   module Parser
-    class GFM < Kramdown::Parser::Kramdown
+    lass GFM < Kramdown::Parser::Kramdown
 
       def parse_link
         super
 
         # Get link
         current_link = @tree.children.select{ |element| [:a].include?(element.type) }.last
+        puts "HERE:"
+        puts current_link
+        puts "---"
 
         # If absolute path, prepend site.baseurl
         unless current_link.nil? or $site.baseurl.nil?
