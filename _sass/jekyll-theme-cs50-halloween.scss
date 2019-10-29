@@ -2,7 +2,7 @@
 $font-family-sans-serif: "PT Sans" !default;
 
 // Crimson links
-$link-color: #a51c30 !default;
+$link-color: #FE8000 !default;
 $link-hover-color: $link-color !default;
 
 // Import Bootstrap
@@ -45,7 +45,7 @@ img {
 
 // Crimson background, transparent text
 aside {
-    background-color: $link-color;
+    background-color: #FE8000;
     color: rgba(255, 255, 255, 0.5);
     font-size: 1.125rem;
 }
@@ -91,17 +91,17 @@ aside button[data-toggle=collapse],
 aside button[data-toggle=collapse]:hover {
     background-color: inherit;
     border-color: rgba(255, 255, 255, .5);
-    color: rgba(255, 255, 255, 1);
+    color: white;
 }
 
 // Opaque border
 aside button[data-toggle=collapse]:hover {
-    border-color: rgba(255, 255, 255, 1);
+    border-color: white;
 }
 
 // Invert colors when not collapsed
 aside button[data-toggle=collapse]:not(.collapsed) {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: white;
     color: $link-color;
 }
 
@@ -350,3 +350,13 @@ main.col-md {
 .highlight .vi { color: #24292e } /* Name.Variable.Instance */
 .highlight .vm { color: #005cc5 } /* Name.Variable.Magic */
 .highlight .il { color: #005cc5 } /* Literal.Number.Integer.Long */
+
+aside {
+  background-color: #000;
+  color: #EFBD76; }
+
+aside a, aside a:hover {
+  color: #FE8000; }
+
+hr {
+  border-top-color: #191919; }
