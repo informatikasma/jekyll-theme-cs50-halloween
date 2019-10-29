@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(_layouts|_includes|_sass|assets|LICENSE)!i) }
   spec.homepage      = "https://cs50.harvard.edu/"
   spec.license       = "MIT"
-  spec.name          = "jekyll-theme-cs50"
-  spec.summary       = "This is CS50's theme for Jekyll."
+  spec.name          = "jekyll-theme-cs50-halloween"
+  spec.summary       = "This is CS50's theme for Jekyll. Halloween edition."
   spec.version       = "0.1.7"
 
   spec.add_runtime_dependency "jekyll", "~> 3.8.6"
