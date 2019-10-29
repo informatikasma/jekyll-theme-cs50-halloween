@@ -4,4 +4,4 @@ deploy:
   on:
     branch: master
   provider: rubygems
-script: gem build jekyll-theme-cs50.gemspec
+script: gem build jekyll-theme-cs50-halloween.gemspec
